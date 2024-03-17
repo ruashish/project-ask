@@ -1,8 +1,8 @@
 import { currentUser, redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
-import { PageRoutes } from '@/constants/routes';
-import { prisma } from '@/utils';
+import { PageRoutes } from '@/lib/constants/routes';
+import { prisma } from '@/lib/utils';
 
 const createNewUser = async () => {
   const user = await currentUser();

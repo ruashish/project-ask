@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { getUserByClerkID, prisma } from '@/utils';
-import { generateProblemStatement } from '@/utils/ai';
+import { getUserByClerkID, prisma } from '@/lib/utils';
+import { generateProblemStatement } from '@/lib/utils/ai';
 
 export const POST = async (request: Request) => {
   const data = await request.json();

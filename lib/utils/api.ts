@@ -1,19 +1,19 @@
-import { ApiRoutes } from "@/constants/routes";
-import { CreatePromptProps } from "@/types";
+import { ApiRoutes } from '@/lib/constants/routes';
+import { CreatePromptProps } from '@/lib/types';
 
 const createURL = (path: string) => window.location.origin + path;
 
 export const newProblemStatement = async (props: CreatePromptProps) => {
   const res = await fetch(
     new Request(createURL(ApiRoutes.ProblemStatement), {
-      method: "POST",
       body: JSON.stringify(props),
-    })
+      method: 'POST',
+    }),
   );
 
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Something went wrong on API server!");
+    throw new Error('Something went wrong on API server!');
   }
 };

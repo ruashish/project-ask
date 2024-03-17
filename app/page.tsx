@@ -1,7 +1,7 @@
 import { auth } from '@clerk/nextjs';
 import Link from 'next/link';
 
-import { PageRoutes } from '@/constants/routes';
+import { PageRoutes } from '@/lib/constants/routes';
 
 const App = async () => {
   const { userId } = await auth();

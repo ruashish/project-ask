@@ -2,14 +2,16 @@
 
 import { UserButton } from '@clerk/nextjs';
 
-import { QuestionDifficulty, QuestionField, QuestionType } from '@/constants/prompt-enums';
-import { newProblemStatement } from '@/utils/api';
+import { CreateQuestionDialog } from '@/components/dashboard';
+import { QuestionDifficulty, QuestionField, QuestionType } from '@/lib/constants/prompt-enums';
+import { newProblemStatement } from '@/lib/utils/api';
 
 const Dashboard = () => {
   return (
     <div>
       Dashboard
       <UserButton />
+      <CreateQuestionDialog />
       <button
         onClick={async () => {
           const response = await newProblemStatement({
