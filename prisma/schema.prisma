@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  clerkId     String        @unique
+  email       String        @unique
+  submissions Submissions[]
+  questions   Questions[]
+}
+
+model Questions {
+  id               String             @id @default(uuid())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  hint             String[]
+  problemStatement String
+  questionType     QuestionType
+  questionField    QuestionField
+  difficulty       QuestionDifficulty
+  userId           String
+  title            String
+  testCases        TestCase[]
+  submissions      Submissions[]
+  user             User               @relation(fields: [userId], references: [id])
+
+  @@unique([userId, id])
+}
+
+model Submissions {
+  id              String    @id @default(uuid())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  submissionCode  String
+  userId          String
+  questionId      String
+  passedTestCases String[]
+  failedTestCases String[]
+  user            User      @relation(fields: [userId], references: [id])
+  question        Questions @relation(fields: [questionId], references: [id])
+
+  @@unique([userId, id])
+  @@unique([questionId, id])
+}
+
+model TestCase {
+  id         String    @id @default(uuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  input      String
+  output     String
+  questionId String
+  question   Questions @relation(fields: [questionId], references: [id])
+
+  @@unique([questionId, id])
+}
+
+enum QuestionType {
+  ARRAY
+  SORTING
+  PATH_FINDING
+  GRAPH
+}
+
+enum QuestionField {
+  BANKING
+  GAME_DEVELOPMENT
+  BASIC
+  MOSTLY_USED
+}
+
+enum QuestionDifficulty {
+  EASY
+  MEDIUM
+  HARD
+}
