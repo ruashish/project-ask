@@ -17,3 +17,23 @@ export const newProblemStatement = async (props: CreatePromptProps) => {
     throw new Error('Something went wrong on API server!');
   }
 };
+
+export const listQuestions = async (props: {
+  questionType: string;
+  questionField: string;
+  difficulty: string;
+  page?: number;
+}) => {
+  const res = await fetch(
+    new Request(createURL(ApiRoutes.ListQuestions), {
+      body: JSON.stringify(props),
+      method: 'POST',
+    }),
+  );
+
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error('Something went wrong on API server!');
+  }
+};

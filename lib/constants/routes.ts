@@ -6,6 +6,7 @@ export const PageRoutes = {
 };
 
 export const ApiRoutes = {
+  ListQuestions: '/api/list-questions',
   ProblemStatement: '/api/problem-statement',
   User: '/api/user',
 };
