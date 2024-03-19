@@ -3,7 +3,7 @@
 import { UserButton } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { CreateQuestionDialog, QuestionTable } from '@/components/dashboard';
+import { CreateQuestionDialog, QuestionTable } from '@/lib/components/dashboard';
 import { QuestionDifficulty, QuestionField, QuestionType } from '@/lib/constants/prompt-enums';
 import { newProblemStatement } from '@/lib/utils/api';
 
@@ -24,7 +24,6 @@ const Dashboard = () => {
               questionField: QuestionField.BANKING,
               questionType: QuestionType.ARRAY,
             });
-            console.log('response', response);
           }}
         >
           Create question

@@ -1,4 +1,4 @@
-import { ProblemPage } from '@/components';
+import { ProblemPage } from '@/lib/components';
 
 const Page = async ({ params }: { params: { id: string } }) => {
   // const user = await getUserByClerkID();

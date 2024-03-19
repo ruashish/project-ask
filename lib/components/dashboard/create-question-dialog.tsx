@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/lib/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog';
-import { Label } from '@/components/ui/label';
+} from '@/lib/components/ui/dialog';
+import { Label } from '@/lib/components/ui/label';
 import { QuestionDifficulty, QuestionField, QuestionType } from '@/lib/constants/prompt-enums';
 import { enumToOptions } from '@/lib/utils';
 
