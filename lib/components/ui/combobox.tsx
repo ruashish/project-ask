@@ -17,6 +17,7 @@ interface ComboboxProps {
   defaultButtonLabel: string;
   searchLabel: string;
   notFoundLabel?: string;
+  onChange?: (value: string) => void;
 }
 
 export const Combobox = ({
@@ -24,6 +25,7 @@ export const Combobox = ({
   defaultButtonLabel,
   searchLabel,
   notFoundLabel = 'No match found',
+  onChange,
 }: ComboboxProps) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -46,6 +48,7 @@ export const Combobox = ({
                 key={option.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? '' : currentValue);
+                  onChange?.(currentValue === value ? '' : currentValue);
                   setOpen(false);
                 }}
                 value={option.value}

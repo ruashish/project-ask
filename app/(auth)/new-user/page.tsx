@@ -7,8 +7,6 @@ import { prisma } from '@/lib/utils';
 const createNewUser = async () => {
   const user = await currentUser();
 
-  console.log('__________------');
-
   if (!user) {
     redirectToSignIn();
   } else {

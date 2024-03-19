@@ -4,7 +4,9 @@ import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { ThemeProvider } from '@/lib/components/atoms';
+import { ThemeProvider } from '@/lib/components';
+import { NavBar } from '@/lib/components/navigation/nav-bar';
+import { Toaster } from '@/lib/components/ui/sonner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +25,9 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <NavBar />
             {children}
+            <Toaster richColors />
           </ThemeProvider>
         </body>
       </html>

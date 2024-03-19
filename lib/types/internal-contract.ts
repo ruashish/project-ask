@@ -1,6 +1,4 @@
-import { Questions } from '@prisma/client';
-
-import { QuestionDifficulty, QuestionField, QuestionType } from '../constants/prompt-enums';
+import { QuestionDifficulty, QuestionField, Questions, QuestionType } from '@prisma/client';
 
 export interface ListQuestionsRequest {
   questionType?: QuestionType;

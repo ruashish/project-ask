@@ -1,33 +1,16 @@
 'use client';
 
-import { UserButton } from '@clerk/nextjs';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { CreateQuestionDialog, QuestionTable } from '@/lib/components/dashboard';
-import { QuestionDifficulty, QuestionField, QuestionType } from '@/lib/constants/prompt-enums';
-import { newProblemStatement } from '@/lib/utils/api';
+import { QuestionTable } from '@/lib/components/dashboard';
 
 const Dashboard = () => {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
-        Dashboard
+      <div className="px-6 py-4">
         <QuestionTable />
-        <UserButton />
-        <CreateQuestionDialog />
-        <button
-          onClick={async () => {
-            const response = await newProblemStatement({
-              difficulty: QuestionDifficulty.EASY,
-              questionField: QuestionField.BANKING,
-              questionType: QuestionType.ARRAY,
-            });
-          }}
-        >
-          Create question
-        </button>
       </div>
     </QueryClientProvider>
   );

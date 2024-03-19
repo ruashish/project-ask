@@ -10,7 +10,7 @@ const parser = StructuredOutputParser.fromZodSchema(
     problemStatement: z
       .string()
       .describe(
-        'a dsa problem statement with example, should have detailed description and examples for what user has to code. also be very creative with the problem statement.',
+        'a dsa problem statement with example, should have detailed description and examples for what user has to code. also be very creative with the problem statement and present it in a form of interesting story.',
       ),
     testCases: z
       .array(
