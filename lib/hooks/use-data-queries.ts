@@ -1,13 +1,23 @@
 import { useQuery } from 'react-query';
 
-interface useDataQueriesProps {
-  queryKey?: string;
-  url: string;
-}
+import { DataQuery, DataQueryResponse } from '../types';
 
-export const useDataQueries = ({ queryKey, url }: useDataQueriesProps) => {
-  const { data, isError, error, isLoading } = useQuery(queryKey ?? url, async () => {
-    const response = await fetch(url);
+export const useDataQueries = <Request, Response>({
+  queryKey,
+  url,
+  body,
+  method = 'POST',
+  page = 1,
+  pageSize = 10,
+}: DataQuery<Request>): DataQueryResponse<Response> => {
+  const { data, isError, error, isLoading } = useQuery([queryKey ?? url, page], async () => {
+    const response = await fetch(url, {
+      body: JSON.stringify({ ...body, page, pageSize }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method,
+    });
     return response.json();
   });
 

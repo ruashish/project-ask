@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 const config = {
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: ['./pages/**/*.{ts,tsx}', './lib/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   darkMode: ['class'],
   plugins: [require('tailwindcss-animate')],
   prefix: '',

@@ -1,22 +1,30 @@
 import { NextResponse } from 'next/server';
 
+import { ListQuestionsRequest } from '@/lib/types';
 import { prisma } from '@/lib/utils';
 
-export const GET = async (request: Request) => {
+export const POST = async (request: Request) => {
   const { questionType, questionField, difficulty, page = 1 } = await request.json();
 
-  const pageSize = 20;
+  const pageSize = 10;
   const skip = (page - 1) * pageSize;
 
-  const entry = await prisma.questions.findMany({
-    skip,
-    take: pageSize,
-    where: {
-      difficulty,
-      questionField,
-      questionType,
-    },
-  });
+  // Dynamically build the where object based on the provided filters
+  const where: ListQuestionsRequest = {};
+  if (questionType) where.questionType = questionType;
+  if (questionField) where.questionField = questionField;
+  if (difficulty) where.difficulty = difficulty;
 
-  return NextResponse.json({ data: entry });
+  const [entries, totalCount] = await prisma.$transaction([
+    prisma.questions.findMany({
+      skip,
+      take: pageSize,
+      where,
+    }),
+    prisma.questions.count({
+      where,
+    }),
+  ]);
+
+  return NextResponse.json({ data: entries, totalCount });
 };
