@@ -6,8 +6,8 @@ import { NavMenu } from './nav-menu';
 
 export const NavBar = () => {
   return (
-    <div className="h-full w-full">
-      <nav className="flex items-center justify-between px-5 py-4">
+    <div className="sticky left-0 top-0 z-10 h-fit w-full bg-background">
+      <nav className="flex items-center justify-between px-6 py-4">
         <NavMenu />
         <div className="flex items-center gap-6">
           <CreateQuestionDialog />

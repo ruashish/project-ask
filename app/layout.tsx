@@ -7,6 +7,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/lib/components';
 import { NavBar } from '@/lib/components/navigation/nav-bar';
 import { Toaster } from '@/lib/components/ui/sonner';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,10 +24,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={cn(inter.className)}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <NavBar />
-            {children}
+            <div className="h-full overflow-y-auto">{children}</div>
             <Toaster richColors />
           </ThemeProvider>
         </body>

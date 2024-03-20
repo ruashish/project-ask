@@ -31,15 +31,15 @@ export const CreateQuestionDialog = () => {
       <DialogTrigger asChild>
         <Button className="gap-2" variant="outline">
           <PlusIcon />
-          <span>Create Question</span>
+          <span className="text-sm">Create Question</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Create Customized Problem Statement</DialogTitle>
           <DialogDescription>Make changes to your profile here. Click save when done.</DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 text-sm">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right" htmlFor="name">
               Type
@@ -85,6 +85,7 @@ export const CreateQuestionDialog = () => {
         </div>
         <DialogFooter>
           <Button
+            className="text-sm"
             disabled={!questionType || !questionDifficulty || !questionField}
             onClick={async () => {
               if (questionType && questionDifficulty && questionField) {
@@ -107,6 +108,7 @@ export const CreateQuestionDialog = () => {
                 }
               }
             }}
+            size="sm"
             type="submit"
           >
             Create

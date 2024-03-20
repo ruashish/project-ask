@@ -8,7 +8,7 @@ export const useDataQueries = <Request, Response>({
   body,
   method = 'POST',
   page = 1,
-  pageSize = 10,
+  pageSize = 20,
 }: DataQuery<Request>): DataQueryResponse<Response> => {
   const { data, isError, error, isLoading } = useQuery([queryKey ?? url, page], async () => {
     const response = await fetch(url, {
