@@ -26,8 +26,12 @@ export default function RootLayout({
       <html lang="en">
         <body className={cn(inter.className)}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <NavBar />
-            <div className="h-full overflow-y-auto">{children}</div>
+            <div className="relative grid h-screen grid-rows-[auto_1fr]">
+              <div className="sticky left-0 right-0 top-0 z-10">
+                <NavBar />
+              </div>
+              <div className="h-full overflow-y-auto">{children}</div>
+            </div>
             <Toaster richColors />
           </ThemeProvider>
         </body>

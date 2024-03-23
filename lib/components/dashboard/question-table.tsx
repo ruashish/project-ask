@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/lib/components/ui/table';
@@ -45,7 +46,9 @@ export const QuestionTable = () => {
             {questionList.map((question) => (
               <TableRow key={question.id}>
                 <TableCell className="font-medium">{}</TableCell>
-                <TableCell>{question.title}</TableCell>
+                <TableCell className="cursor-pointer">
+                  <Link href={`/problems/${question.id}`}>{question.title}</Link>
+                </TableCell>
                 <TableCell className="capitalize">{question.difficulty}</TableCell>
                 <TableCell className="text-right">{}</TableCell>
               </TableRow>
