@@ -1,9 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import React from 'react';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/lib/components/ui/table';
 import { ApiRoutes } from '@/lib/constants/routes';
-import { useDataQueries } from '@/lib/hooks';
 import { ListQuestionsRequest, ListQuestionsResponse } from '@/lib/types';
 
 import { Button } from '../ui/button';

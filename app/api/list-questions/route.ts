@@ -6,9 +6,10 @@ import { prisma } from '@/lib/utils';
 export const POST = async (request: Request) => {
   const { questionType, questionField, difficulty, page = 1, pageSize = 10 } = await request.json();
 
+  console.log(request.json());
+
   const skip = (page - 1) * pageSize;
 
-  // Dynamically build the where object based on the provided filters
   const where: ListQuestionsRequest = {};
   if (questionType) where.questionType = questionType;
   if (questionField) where.questionField = questionField;

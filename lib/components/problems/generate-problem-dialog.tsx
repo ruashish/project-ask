@@ -19,9 +19,9 @@ import { Label } from '@/lib/components/ui/label';
 import { enumToOptions } from '@/lib/utils';
 import { newProblemStatement } from '@/lib/utils/api';
 
-import { Combobox } from './ui/combobox';
+import { Combobox } from '../ui/combobox';
 
-export const CreateQuestionDialog = () => {
+export const GenerateProblemDialog = () => {
   const [questionType, setQuestionType] = React.useState<QuestionType>();
   const [questionDifficulty, setQuestionDifficulty] = React.useState<QuestionDifficulty>();
   const [questionField, setQuestionField] = React.useState<QuestionField>();

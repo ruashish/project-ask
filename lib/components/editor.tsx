@@ -5,7 +5,7 @@ const EDITOR_OPTIONS = {
   formatOnType: true,
   minimap: { enabled: false },
   overviewRulerLanes: 0,
-  padding: { top: 8 },
+  padding: { top: 4 },
   renderLineHighlight: 'none' as const,
 };
 
@@ -19,7 +19,7 @@ export const CodeEditor = () => {
 
   return (
     <Editor
-      className="border-default bg-overlay border-y"
+      className="overflow-hidden py-8"
       defaultLanguage={'cpp'}
       options={EDITOR_OPTIONS}
       theme={EDITOR_THEME.DARK}
